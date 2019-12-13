@@ -32,7 +32,7 @@ $config['handler'] = $container->get(HandlerStackFactory::class)->create();
 $app->rebind('http_client', new Client($config));
 
 // 重写 Handler
-$app['guzzle_handler'] = new CoroutineHandler();
+       $app['guzzle_handler'] = $this->container->get(HandlerStackFactory::class)->create();
 
 // 设置 OAuth 授权的 Guzzle 配置
 AbstractProvider::setGuzzleOptions([
